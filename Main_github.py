@@ -174,10 +174,10 @@ def echo_all(message):
         bot.reply_to(message, response)
 
     # Если есть похожие сообщения (большая вероятность) - пользователь получает список в клавиатуре из похожих вопросов
-    elif max_similarity > 0.6:
+    elif max_similarity >= 0.62:
         keyboard = telebot.types.ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
         for key, value in data.items():
-            if similar(user_message, key) > 0.6:
+            if similar(user_message, key) >= 0.62:
                 q_list.append(telebot.types.KeyboardButton(key))
         q_list.reverse()
         for i in q_list:
